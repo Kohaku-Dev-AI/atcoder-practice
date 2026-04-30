@@ -1,18 +1,19 @@
 package main
 
 import (
-	"bufio"
-	"os"
+	"fmt"
 )
 
 func main() {
-	scanner := bufio.NewScanner(os.Stdin)
-	scanner.Split(bufio.ScanWords)
-}
+	var a, b int
+	fmt.Scan(&a, &b)
 
-func abs(x int) int {
-	if x < 0 {
-		return -x
+	ans := 0
+	sockets := 1
+
+	for sockets < b {
+		sockets += a - 1
+		ans++
 	}
-	return x
+	fmt.Println(ans)
 }
