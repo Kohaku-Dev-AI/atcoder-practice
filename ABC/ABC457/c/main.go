@@ -29,11 +29,8 @@ func main() {
 	}
 
 	c := make([]int, n)
-	count := 0
 	for i := 0; i < n; i++ {
 		c[i] = nextInt()
-		count += c[i] * len(matrix[i])
-
 	}
 
 	b := make([]int, 0)
