@@ -18,13 +18,13 @@ func nextInt() int {
 func main() {
 	sc.Split(bufio.ScanWords)
 	n, a, b := nextInt(), nextInt(), nextInt()
-	redBall := 0
-	redBall += (n/(a+b))*a
-	n = n - (n/(a+b))*(a+b)
-	if n >= a {
-		redBall += a
+	setLen := a + b
+	blueBall := (n / setLen) * a
+	rem := n % setLen
+	if rem >= a {
+		blueBall += a
 	} else {
-		redBall += n
+		blueBall += rem
 	}
-	fmt.Println(redBall)
+	fmt.Println(blueBall)
 }
