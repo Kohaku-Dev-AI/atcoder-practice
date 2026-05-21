@@ -17,12 +17,13 @@ func nextInt() int {
 
 func main() {
 	sc.Split(bufio.ScanWords)
-	x1,y1,x2,y2 := nextInt(),nextInt(),nextInt(),nextInt()
-	var x3,y3,x4,y4 int int int int 
-	if (y1 == y2){
-		x3 = x2
-		y3 = y1 + (x2 -x1)
-		x4 = x1
-		y4 = y3
-	}	
+	x1, y1, x2, y2 := nextInt(), nextInt(), nextInt(), nextInt()
+	dx := x2 - x1
+	dy := y2 - y1
+	x3 := x2 - dy // 点2から「左（マイナス方向）」へ
+	y3 := y2 + dx
+
+	x4 := x1 - dy // 点1から「左（マイナス方向）」へ
+	y4 := y1 + dx
+	fmt.Println(x3, y3, x4, y4)
 }
