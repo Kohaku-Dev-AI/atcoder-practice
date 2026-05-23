@@ -15,20 +15,29 @@ func nextInt() int {
 	return i
 }
 
+func nextString() string {
+	sc.Scan()
+	return sc.Text()
+}
+
 func main() {
+	const maxBufSize = 20 * 1024 * 1024 // 20MB
+	sc.Buffer(make([]byte, bufio.MaxScanTokenSize), maxBufSize)
+
 	sc.Split(bufio.ScanWords)
 	n := nextInt()
-	var s string
-	fmt.Scan(&s)
+	s := nextString()
+
 	x := 0
 	maxCount := 0
+
 	for i := 0; i < n; i++ {
-		if s[i] == 'I' {
+		if string(s[i]) == "I" {
 			x++
 			if x > maxCount {
 				maxCount = x
 			}
-		} else if s[i] == 'D' {
+		} else if string(s[i]) == "D" {
 			x--
 		}
 	}
