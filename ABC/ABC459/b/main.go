@@ -9,43 +9,48 @@ import (
 
 var sc = bufio.NewScanner(os.Stdin)
 
-func nextInt() int {
+func nextString() string {
 	sc.Scan()
-	i, _ := strconv.Atoi(sc.Text())
+	return sc.Text()
+}
+
+func nextInt() int {
+	i, _ := strconv.Atoi(nextString())
 	return i
 }
 
 func main() {
 	sc.Split(bufio.ScanWords)
+
 	n := nextInt()
-	s := make([]string, n)
+
+	var result []byte
+
 	for i := 0; i < n; i++ {
-		fmt.Scan(&s[i])
-	}
-	c := make([]string, n)
-	for i := 0; i < n; i++ {
-		switch s[i][0] {
+		s := nextString()
+		if len(s) == 0 {
+			continue
+		}
+
+		switch s[0] {
 		case 'a', 'b', 'c':
-			c[i] = "2"
+			result = append(result, '2')
 		case 'd', 'e', 'f':
-			c[i] = "3"
+			result = append(result, '3')
 		case 'g', 'h', 'i':
-			c[i] = "4"
+			result = append(result, '4')
 		case 'j', 'k', 'l':
-			c[i] = "5"
+			result = append(result, '5')
 		case 'm', 'n', 'o':
-			c[i] = "6"
+			result = append(result, '6')
 		case 'p', 'q', 'r', 's':
-			c[i] = "7"
+			result = append(result, '7')
 		case 't', 'u', 'v':
-			c[i] = "8"
+			result = append(result, '8')
 		case 'w', 'x', 'y', 'z':
-			c[i] = "9"
+			result = append(result, '9')
 		}
 	}
-	var totalC string
-	for i := 0; i < n; i++ {
-		totalC += c[i]
-	}
-	fmt.Println(totalC)
+
+	fmt.Println(string(result))
 }
