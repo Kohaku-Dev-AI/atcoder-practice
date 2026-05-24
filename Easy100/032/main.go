@@ -21,23 +21,23 @@ func nextString() string {
 }
 
 func main() {
-	const maxBufSize = 20 * 1024 * 1024 // 20MB
+	const maxBufSize = 20 * 1024 * 1024
 	sc.Buffer(make([]byte, bufio.MaxScanTokenSize), maxBufSize)
 
 	sc.Split(bufio.ScanWords)
-	n := nextInt()
+	_ = nextInt()
 	s := nextString()
 
 	x := 0
 	maxCount := 0
 
-	for i := 0; i < n; i++ {
-		if string(s[i]) == "I" {
+	for i := 0; i < len(s); i++ {
+		if s[i] == 'I' {
 			x++
 			if x > maxCount {
 				maxCount = x
 			}
-		} else if string(s[i]) == "D" {
+		} else if s[i] == 'D' {
 			x--
 		}
 	}
