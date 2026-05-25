@@ -21,6 +21,8 @@ func nextString() string {
 }
 
 func main() {
+	const maxBufSize = 20 * 1024 * 1024
+	sc.Buffer(make([]byte, bufio.MaxScanTokenSize), maxBufSize)
 	sc.Split(bufio.ScanWords)
 	s := nextString()
 	alphabetMap := make(map[rune]bool)
