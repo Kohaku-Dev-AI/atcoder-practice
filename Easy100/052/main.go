@@ -15,26 +15,25 @@ func nextInt() int {
 	return i
 }
 
+func min(a, b int) int {
+	if a < b {
+		return a
+	}
+	return b
+}
+
 func main() {
 	sc.Split(bufio.ScanWords)
 	n := nextInt()
-	prev := nextInt()
-	if n == 2 {
-		println(prev * 2)
-		return
+	b := make([]int, n-1)
+	for i := 0; i < n-1; i++ {
+		b[i] = nextInt()
 	}
-	maxValue := prev
-	for i := 0; i < n-2; i++ {
-		countValue := nextInt()
-		if countValue > prev {
-			maxValue += prev
-		} else {
-			maxValue += countValue
-		}
-		if i == n-3 {
-			maxValue += countValue
-		}
-		prev = countValue
+	ans := b[0]
+
+	for i := 1; i < n-1; i++ {
+		ans += min(b[i-1], b[i])
 	}
-	fmt.Println(maxValue)
+	ans += b[n-2]
+	fmt.Println(ans)
 }
