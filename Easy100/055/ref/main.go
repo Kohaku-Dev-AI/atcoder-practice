@@ -3,7 +3,6 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"math"
 	"os"
 	"strconv"
 )
@@ -17,13 +16,18 @@ func nextInt() int {
 }
 
 func isPerfectSquare(n int) bool {
-	root := int(math.Round(math.Sqrt(float64(n))))
-	return root*root == n
+	for q := 0; q*q <= n; q++ {
+		if q*q == n {
+			return true
+		}
+	}
+	return false
 }
 
 func main() {
 	sc.Split(bufio.ScanWords)
 	n, d := nextInt(), nextInt()
+
 	x := make([][]int, n)
 	for i := 0; i < n; i++ {
 		x[i] = make([]int, d)
@@ -36,8 +40,10 @@ func main() {
 		for j := i + 1; j < n; j++ {
 			totalNumber := 0
 			for k := 0; k < d; k++ {
-				totalNumber += (x[i][k] - x[j][k]) * (x[i][k] - x[j][k])
+				diff := x[i][k] - x[j][k]
+				totalNumber += diff * diff
 			}
+
 			if isPerfectSquare(totalNumber) {
 				intCount++
 			}
